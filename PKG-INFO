@@ -1,3 +1,24 @@
+Metadata-Version: 2.1
+Name: abstract_webtools
+Version: 0.1.4.90
+Summary: Abstract Web Tools is a Python package that provides various utility functions for web scraping tasks. It is built on top of popular libraries such as `requests`, `BeautifulSoup`, and `urllib3` to simplify the process of fetching and parsing web content.
+Home-page: https://github.com/AbstractEndeavors/abstract_essentials/tree/main/abstract_webtools
+Author: putkoff
+Author-email: partners@abstractendeavors.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: abstract_webtools>=0.1.0
+Requires-Dist: abstract_utilities>=0.2.0.0
+Requires-Dist: PySimpleGUI>=4.60.5
+Requires-Dist: urllib3>=2.0.4
+Requires-Dist: requests>=2.31.0
+
 # Abstract WebTools
 Provides utilities for inspecting and parsing web content, including React components and URL utilities, with enhanced capabilities for managing HTTP requests and TLS configurations.
 
