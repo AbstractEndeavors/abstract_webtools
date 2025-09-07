@@ -1849,7 +1849,6 @@ class CrawlManagerSingleton():
         elif parse_type != CrawlManagerSingleton._instance.parse_type or url != CrawlManagerSingleton._instance.url  or source_code != CrawlManagerSingleton._instance.source_code:
             CrawlManagerSingleton._instance = CrawlManager(url=url,parse_type=parse_type,source_code=source_code)
         return CrawlManagerSingleton._instance
-<<<<<<< HEAD
 =======
 from urllib.parse import urlparse, parse_qs
 import time
@@ -1866,4 +1865,3 @@ def try_request(request):
         response = None
     return response
 
->>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
