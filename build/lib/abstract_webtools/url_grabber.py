@@ -2,10 +2,7 @@ from abstract_gui import make_component,sg
 import inspect
 import re
 from . import UserAgentManager,UrlManager,SafeRequest,SoupManager,LinkManager,CipherManager,requests,ssl,BeautifulSoup,HTTPAdapter,PoolManager,ssl_
-<<<<<<< HEAD
-=======
 from .managers import *
->>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
 window = None
 
 def get_attrs(values):
@@ -29,11 +26,8 @@ def get_attrs(values):
   else:
     tags_js['attribute']=tags_js['attribute'][0]
   return tags_js
-<<<<<<< HEAD
-def get_user_agent_manager(user_agent=None):
-=======
+
 def get_user_agent_mgr(user_agent=None):
->>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
   return UserAgentManager(user_agent=user_agent)
 def get_cipher_list():
   return CipherManager().get_default_ciphers()
@@ -140,13 +134,10 @@ def process_url(window,values):
     if temp_url:
       valid='valid'
       response_code = SafeRequest(url=temp_mgr).response.status_code
-<<<<<<< HEAD
-=======
     temp_url=urlManager(url=warn_url).url
     if temp_url:
       valid='valid'
       response_code = requestManager(url=temp_mgr).response.status_code
->>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
       warn = 'success'
       warn_url = temp_mgr
       update_status(window,warn,warn_url,response_code,valid)
@@ -169,9 +160,7 @@ def update_source_code(url_manager,request_manager,soup_manager,link_manager,val
     if parse_type != soup_manager.parse_type:
       soup_manager.update_parse_type(parse_type=parse_type)
     all_tags=soup_manager.get_all_tags_and_attribute_names()
-<<<<<<< HEAD
     window['-SOURCECODE-'].update(value=soup_manager.soup)
-=======
     window['-SOURCECODE-'].update(value=soup_manager.soupdef update_url(url_mgr,request_mgr,soup_mgr,link_mgr,values,cipher_list=get_cipher_list(),user_agent=get_user_agents()[0]):
       ciphers = CipherManager(cipher_list=cipher_list).ciphers_string
       request_mgr = requestManager(url_mgr=url_mgr,ciphers=ciphers,user_agent=get_user_agents()[0])
@@ -189,7 +178,6 @@ def update_source_code(url_mgr,request_mgr,soup_mgr,link_mgr,values):
       soup_mgr.update_parse_type(parse_type=parse_type)
     all_tags=soup_mgr.get_all_tags_and_attribute_names()
     window['-SOURCECODE-'].update(value=soup_mgr.soup)
->>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
     if values['-SOUP_TAG-'] != all_tags['tags']:
       window['-SOUP_TAG-'].update(values=all_tags['tags'],value=all_tags['tags'][0])
     if values['-SOUP_ATTRIBUTE-'] != all_tags['attributes']:
@@ -204,9 +192,7 @@ def url_grabber_while(window,initial_url="www.example.com"):
     request_manager = SafeRequest(url_manager=url_manager)
     soup_manager= SoupManager(url_manager=url_manager,request_manager=request_manager)
     link_manager= LinkManager(url_manager=url_manager,request_manager=request_manager,soup_manager=soup_manager)
-<<<<<<< HEAD
-=======
-      return url_mgr,request_mgr,soup_mgr,link_mgr
+    return url_mgr,request_mgr,soup_mgr,link_mgr
 def url_grabber_while(window,initial_url="www.example.com"):
     return_data=None
     url_grab = False
@@ -214,7 +200,6 @@ def url_grabber_while(window,initial_url="www.example.com"):
     request_mgr = requestManager(url_mgr=url_mgr)
     soup_mgr= SoupManager(url_mgr=url_mgr,request_mgr=request_mgr)
     link_mgr= LinkManager(url_mgr=url_mgr,request_mgr=request_mgr,soup_mgr=soup_mgr)
->>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
     while True:
         event, values = window.read()
         if event == sg.WINDOW_CLOSED:
@@ -230,9 +215,7 @@ def url_grabber_while(window,initial_url="www.example.com"):
               url_grab=True
         if event == 'get soup':
             tags_js = get_attrs(values)
-            all_desired=soup_manager.find_tags_by_attributes(tag=tags_js['tag'], attr=tags_js['attribute'],attr_values=tags_js['input'])
-<<<<<<< HEAD
-=======
+            all_desired=soup_manager.find_tags_by_attributes(tag=tags_js['tag'], attr=tags_js['attribute'],attr_values=tags_js['inputHEAD
           if urlManager(url=url).url:
             if url != url_mgr.url or url == initial_url:
               url_mgr = urlManager(url=url)
@@ -243,16 +226,12 @@ def url_grabber_while(window,initial_url="www.example.com"):
         if event == 'get soup':
             tags_js = get_attrs(values)
             all_desired=soup_mgr.find_tags_by_attributes(tag=tags_js['tag'], attr=tags_js['attribute'],attr_values=tags_js['input'])
->>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
             window['-FIND_ALL_OUTPUT-'].update(value=all_desired)
         if event == '-CUSTOMUA-':
             window['-SOURCECODE-'].update(disabled=values['-CUSTOMUA-'])
             if not values['-CUSTOMUA-']:
                 window['-USERAGENT-'].update(value=user_agent_manager.user_agent_header)
-<<<<<<< HEAD
-=======
                 window['-USERAGENT-'].update(value=user_agent_mgr.user_agent_header)
->>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
                 window['-USERAGENT-'].update(disabled=True)
             else:
                 window['-USERAGENT-'].update(disabled=False)
@@ -263,15 +242,12 @@ def url_grabber_while(window,initial_url="www.example.com"):
             if parse_type != soup_manager.parse_type:
               soup_manager.update_parse_type(parse_type=parse_type)
             window['-SOURCECODE-'].update(value=soup_manager.soup)
-<<<<<<< HEAD
-=======
             window['-FIND_ALL_OUTPUT-'].update(value=soup_mgr.extract_text_sections())
         if event == 'Action':
             parse_type = values['-parse_type-']
             if parse_type != soup_mgr.parse_type:
               soup_mgr.update_parse_type(parse_type=parse_type)
             window['-SOURCECODE-'].update(value=soup_mgr.soup)
->>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
         elif event == 'Send Soup':
           return_data = values['-FIND_ALL_OUTPUT-']
           break
