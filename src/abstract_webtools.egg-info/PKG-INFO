@@ -1,8 +1,8 @@
-Metadata-Version: 2.1
-Name: abstract-webtools
-Version: 0.1.5.1
-Summary: Abstract Web Tools is a Python package that provides various utility functions for web scraping tasks. It is built on top of popular libraries such as `requests`, `BeautifulSoup`, and `urllib3` to simplify the process of fetching and parsing web content.
-Home-page: https://github.com/AbstractEndeavors/abstract_essentials/tree/main/abstract_webtools
+Metadata-Version: 2.4
+Name: abstract_webtools
+Version: 0.1.6.147
+Summary: Utilities for fetching/parsing web content with requests/urllib3/BS4 and helpers.
+Home-page: https://github.com/AbstractEndeavors/abstract_webtools
 Author: putkoff
 Author-email: partners@abstractendeavors.com
 Classifier: Development Status :: 3 - Alpha
@@ -10,10 +10,37 @@ Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Programming Language :: Python :: 3
 Classifier: Programming Language :: Python :: 3.11
-Requires-Python: >=3.6
+Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
+Requires-Dist: requests>=2.31.0
+Requires-Dist: urllib3>=2.0.4
+Requires-Dist: beautifulsoup4>=4.12.0
+Provides-Extra: gui
+Requires-Dist: PySimpleGUI>=4.60.5; extra == "gui"
+Requires-Dist: PyQt5>=5.15.0; extra == "gui"
+Provides-Extra: drivers
+Requires-Dist: selenium>=4.15.2; extra == "drivers"
+Requires-Dist: webdriver-manager>=4.0.0; extra == "drivers"
+Provides-Extra: media
+Requires-Dist: yt-dlp>=2024.4.9; extra == "media"
+Requires-Dist: m3u8>=4.0.0; extra == "media"
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
 # Abstract WebTools
 Provides utilities for inspecting and parsing web content, including React components and URL utilities, with enhanced capabilities for managing HTTP requests and TLS configurations.
 
@@ -281,6 +308,17 @@ You can customize the parsing behavior by specifying the parser type during init
 
 ```python
 soup_manager.update_parse_type('lxml')
+<<<<<<< HEAD
+=======
+# Unknown Package (vUnknown Version)
+```
+No description available
+
+## Installation
+
+```bash
+pip install Unknown Package
+>>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
 ```
 
 ## Dependencies
@@ -439,5 +477,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 -**Part of**: abstract_essentials
 -**Date**: 10/10/2023
 -**Version**: 0.1.4.54
+<<<<<<< HEAD
 ---
+=======
+>>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
 

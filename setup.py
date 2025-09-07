@@ -1,25 +1,45 @@
-from time import time
-import setuptools
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
-setuptools.setup(
-    name='abstract_webtools',
-    version='0.1.5.01',
-    author='putkoff',
-    author_email='partners@abstractendeavors.com',
-    description='Abstract Web Tools is a Python package that provides various utility functions for web scraping tasks. It is built on top of popular libraries such as `requests`, `BeautifulSoup`, and `urllib3` to simplify the process of fetching and parsing web content.',
-    long_description=long_description,
-    long_description_content_type='text/markdown',
-    url='https://github.com/AbstractEndeavors/abstract_essentials/tree/main/abstract_webtools',
-    classifiers=[
-        'Development Status :: 3 - Alpha',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.11',
-    ],
-    install_requires=('abstract_webtools>=0.1.0', 'abstract_utilities>=0.2.0.0', 'PySimpleGUI>=4.60.5', 'urllib3>=2.0.4', 'requests>=2.31.0'),
+from pathlib import Path
+from setuptools import setup, find_packages
+
+README = Path("README.md").read_text(encoding="utf-8")
+
+setup(
+    name="abstract_webtools",
+    version='0.1.6.147',  # bump once per release
+    author="putkoff",
+    author_email="partners@abstractendeavors.com",
+    description="Utilities for fetching/parsing web content with requests/urllib3/BS4 and helpers.",
+    long_description=README,
+    long_description_content_type="text/markdown",
+    url="https://github.com/AbstractEndeavors/abstract_webtools",
     package_dir={"": "src"},
-    packages=setuptools.find_packages(where="src"),
-    python_requires=">=3.6",
+    packages=find_packages(where="src"),
+    python_requires=">=3.8",
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.11",
+    ],
+    # Keep runtime deps to real, installable PyPI packages only.
+    install_requires=[
+        "requests>=2.31.0",
+        "urllib3>=2.0.4",
+        "beautifulsoup4>=4.12.0",
+    ],
+    extras_require={
+        "gui": [
+            "PySimpleGUI>=4.60.5",
+            "PyQt5>=5.15.0",
+        ],
+        "drivers": [
+            "selenium>=4.15.2",
+            "webdriver-manager>=4.0.0",
+        ],
+        "media": [
+            "yt-dlp>=2024.4.9",
+            "m3u8>=4.0.0",
+        ],
+    },
 )
