@@ -4,7 +4,7 @@ from ..cipherManager import *
 from ..sslManager import *
 from ..tlsAdapter import *
 from ..networkManager import *
-from ..seleneumManager import *
+from ..seleniumManager import *
 from ..urlManager import *
 logging.basicConfig(level=logging.INFO)
 
