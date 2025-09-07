@@ -12,7 +12,6 @@ src/abstract_webtools/find_dirs.py
 src/abstract_webtools/k2s_downloader.py
 src/abstract_webtools/main.py
 src/abstract_webtools/soup_gui.py
-src/abstract_webtools/url_grabber.py
 src/abstract_webtools/url_grabber_new.py
 src/abstract_webtools.egg-info/PKG-INFO
 src/abstract_webtools.egg-info/SOURCES.txt
