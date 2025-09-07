@@ -215,7 +215,7 @@ def url_grabber_while(window,initial_url="www.example.com"):
               url_grab=True
         if event == 'get soup':
             tags_js = get_attrs(values)
-            all_desired=soup_manager.find_tags_by_attributes(tag=tags_js['tag'], attr=tags_js['attribute'],attr_values=tags_js['inputHEAD
+            all_desired=soup_manager.find_tags_by_attributes(tag=tags_js['tag'], attr=tags_js['attribute'],attr_values=tags_js['input'])
           if urlManager(url=url).url:
             if url != url_mgr.url or url == initial_url:
               url_mgr = urlManager(url=url)
