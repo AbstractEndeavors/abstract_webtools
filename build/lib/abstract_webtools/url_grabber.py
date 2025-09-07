@@ -1,7 +1,6 @@
 from abstract_gui import make_component,sg
 import inspect
 import re
-from . import UserAgentManager,UrlManager,SafeRequest,SoupManager,LinkManager,CipherManager,requests,ssl,BeautifulSoup,HTTPAdapter,PoolManager,ssl_
 from .managers import *
 window = None
 
@@ -26,7 +25,6 @@ def get_attrs(values):
   else:
     tags_js['attribute']=tags_js['attribute'][0]
   return tags_js
-
 def get_user_agent_mgr(user_agent=None):
   return UserAgentManager(user_agent=user_agent)
 def get_cipher_list():
@@ -130,10 +128,6 @@ def process_url(window,values):
     if warn_url=='' or warn_url == None:
       update_status(window,warn,warn_url,response_code,valid)
       return False
-    temp_url=UrlManager(url=warn_url).url
-    if temp_url:
-      valid='valid'
-      response_code = SafeRequest(url=temp_mgr).response.status_code
     temp_url=urlManager(url=warn_url).url
     if temp_url:
       valid='valid'
@@ -144,24 +138,7 @@ def process_url(window,values):
       return temp_mgr
     update_status(window,warn,warn_url,response_code,valid)
     return False
-def update_url(url_manager,request_manager,soup_manager,link_manager,values,cipher_list=get_cipher_list(),user_agent=get_user_agents()[0]):
-      ciphers = CipherManager(cipher_list=cipher_list).ciphers_string
-      request_manager = SafeRequest(url_manager=url_manager,ciphers=ciphers,user_agent=get_user_agents()[0])
-      if request_manager.source_code:
-        soup_manager= SoupManager(url_manager=url_manager,request_manager=request_manager)
-        link_manager= LinkManager(url_manager=url_manager,request_manager=request_manager,soup_manager=soup_manager)
-        window['-URL-'].update(value=url_manager.url)
-        window['-CIPHERS_OUTPUT-'].update(value=request_manager.ciphers)
-        return update_source_code(url_manager,request_manager,soup_manager,link_manager,values)
-      else:
-        return url_manager,request_manager,soup_manager,link_manager
-def update_source_code(url_manager,request_manager,soup_manager,link_manager,values):
-    parse_type = values['-parse_type-']
-    if parse_type != soup_manager.parse_type:
-      soup_manager.update_parse_type(parse_type=parse_type)
-    all_tags=soup_manager.get_all_tags_and_attribute_names()
-    window['-SOURCECODE-'].update(value=soup_manager.soup)
-    window['-SOURCECODE-'].update(value=soup_manager.soupdef update_url(url_mgr,request_mgr,soup_mgr,link_mgr,values,cipher_list=get_cipher_list(),user_agent=get_user_agents()[0]):
+def update_url(url_mgr,request_mgr,soup_mgr,link_mgr,values,cipher_list=get_cipher_list(),user_agent=get_user_agents()[0]):
       ciphers = CipherManager(cipher_list=cipher_list).ciphers_string
       request_mgr = requestManager(url_mgr=url_mgr,ciphers=ciphers,user_agent=get_user_agents()[0])
       if request_mgr.source_code:
@@ -184,15 +161,7 @@ def update_source_code(url_mgr,request_mgr,soup_mgr,link_mgr,values):
       window['-SOUP_ATTRIBUTE-'].update(values=all_tags['attributes'],value=all_tags['attributes'][0])
       window['-SOUP_ATTRIBUTE_1-'].update(values=all_tags['attributes'],value=all_tags['attributes'][0])
       window['-SOUP_ATTRIBUTE_2-'].update(values=all_tags['attributes'],value=all_tags['attributes'][0])
-      return url_manager,request_manager,soup_manager,link_manager
-def url_grabber_while(window,initial_url="www.example.com"):
-    return_data=None
-    url_grab = False
-    url_manager=UrlManager(url=initial_url)
-    request_manager = SafeRequest(url_manager=url_manager)
-    soup_manager= SoupManager(url_manager=url_manager,request_manager=request_manager)
-    link_manager= LinkManager(url_manager=url_manager,request_manager=request_manager,soup_manager=soup_manager)
-    return url_mgr,request_mgr,soup_mgr,link_mgr
+      return url_mgr,request_mgr,soup_mgr,link_mgr
 def url_grabber_while(window,initial_url="www.example.com"):
     return_data=None
     url_grab = False
@@ -206,16 +175,6 @@ def url_grabber_while(window,initial_url="www.example.com"):
             break
         if event=='-GRAB_URL-' or not url_grab:
           url=values['-URL-']
-          if UrlManager(url=url).url:
-            if url != url_manager.url or url == initial_url:
-              url_manager = UrlManager(url=url)
-              
-              url_manager,request_manager,soup_manager,link_manager=update_url(url_manager=url_manager,request_manager=request_manager,soup_manager=soup_manager,link_manager=link_manager,values=values)
-              window['-URL-'].update(value=url_manager.url)
-              url_grab=True
-        if event == 'get soup':
-            tags_js = get_attrs(values)
-            all_desired=soup_manager.find_tags_by_attributes(tag=tags_js['tag'], attr=tags_js['attribute'],attr_values=tags_js['input'])
           if urlManager(url=url).url:
             if url != url_mgr.url or url == initial_url:
               url_mgr = urlManager(url=url)
@@ -230,18 +189,11 @@ def url_grabber_while(window,initial_url="www.example.com"):
         if event == '-CUSTOMUA-':
             window['-SOURCECODE-'].update(disabled=values['-CUSTOMUA-'])
             if not values['-CUSTOMUA-']:
-                window['-USERAGENT-'].update(value=user_agent_manager.user_agent_header)
                 window['-USERAGENT-'].update(value=user_agent_mgr.user_agent_header)
                 window['-USERAGENT-'].update(disabled=True)
             else:
                 window['-USERAGENT-'].update(disabled=False)
         if event=='Get All Text':
-            window['-FIND_ALL_OUTPUT-'].update(value=soup_manager.extract_text_sections())
-        if event == 'Action':
-            parse_type = values['-parse_type-']
-            if parse_type != soup_manager.parse_type:
-              soup_manager.update_parse_type(parse_type=parse_type)
-            window['-SOURCECODE-'].update(value=soup_manager.soup)
             window['-FIND_ALL_OUTPUT-'].update(value=soup_mgr.extract_text_sections())
         if event == 'Action':
             parse_type = values['-parse_type-']
@@ -258,4 +210,3 @@ def url_grabber_component(url=None):
       url = "www.example.com"
     globals()['window'] = make_component('Window','URL Grabber', layout=get_gpt_layout(url),**expandable())
     return url_grabber_while(window,initial_url=url)
-
