@@ -1,5 +1,4 @@
 # sslManager.py
-from ..abstract_webtools import *
 import ssl, certifi
 
 class SSLManager:

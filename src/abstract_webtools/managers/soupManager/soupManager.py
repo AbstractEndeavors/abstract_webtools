@@ -1,4 +1,3 @@
-from ...abstract_webtools import *
 from ..urlManager import *
 from ..requestManager import *
 from bs4 import BeautifulSoup

@@ -4,7 +4,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.poolmanager import PoolManager
 
 # If these live in your package root, adjust the import as needed:
-from ..abstract_webtools import SSLManager
+from .sslManager import SSLManager
 
 class TLSAdapter(HTTPAdapter):
     """

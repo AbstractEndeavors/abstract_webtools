@@ -1,17 +1,8 @@
 from typing import Optional, List
 import requests
-from ..abstract_webtools import *
 from .sslManager import SSLManager
 from .cipherManager import CipherManager
-
-class TLSAdapter(HTTPAdapter):
-    def __init__(self, ssl_manager: SSLManager=None):
-        ssl_manager = ssl_manager or SSLManager()
-        self.ssl_context = ssl_manager.ssl_context
-        super().__init__()
-    def init_poolmanager(self, *args, **kwargs):
-        kwargs['ssl_context'] = self.ssl_context
-        return super().init_poolmanager(*args, **kwargs)
+from .tlsAdapter import TLSAdapter
 
 class NetworkManager:
     def __init__(self, user_agent_manager=None, ssl_manager=None, proxies=None, cookies=None,

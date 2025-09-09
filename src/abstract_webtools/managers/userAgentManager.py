@@ -1,5 +1,4 @@
-# userAgentManager.py
-from ..abstract_webtools import *
+# userAgentManager
 import random
 
 operating_systems = ['Macintosh','Windows','Linux']
