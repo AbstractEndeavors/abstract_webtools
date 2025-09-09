@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 =======
 
->>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
 # Abstract WebTools
 Provides utilities for inspecting and parsing web content, including React components and URL utilities, with enhanced capabilities for managing HTTP requests and TLS configurations.
 
@@ -269,7 +267,6 @@ You can customize the parsing behavior by specifying the parser type during init
 
 ```python
 soup_manager.update_parse_type('lxml')
-<<<<<<< HEAD
 =======
 # Unknown Package (vUnknown Version)
 ```
@@ -279,7 +276,6 @@ No description available
 
 ```bash
 pip install Unknown Package
->>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
 ```
 
 ## Dependencies
@@ -438,8 +434,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 -**Part of**: abstract_essentials
 -**Date**: 10/10/2023
 -**Version**: 0.1.4.54
-<<<<<<< HEAD
----
-=======
->>>>>>> ba4baf2 (Deploy version 0.1.6.147 at 2025-09-07 09:40:38 UTC)
-

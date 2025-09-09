@@ -4,7 +4,6 @@ setup.cfg
 setup.py
 src/abstract_webtools/__init__.py
 src/abstract_webtools/abstract_usurpit.py
-src/abstract_webtools/abstract_webtools.py
 src/abstract_webtools/big_user_agent_list.py
 src/abstract_webtools/domain_identifier.py
 src/abstract_webtools/extention_list.py
@@ -20,6 +19,7 @@ src/abstract_webtools.egg-info/requires.txt
 src/abstract_webtools.egg-info/top_level.txt
 src/abstract_webtools/managers/__init__.py
 src/abstract_webtools/managers/allss.py
+src/abstract_webtools/managers/browserImmitator.py
 src/abstract_webtools/managers/cipherManager.py
 src/abstract_webtools/managers/crawlManager.py
 src/abstract_webtools/managers/crawlmgr2.py
