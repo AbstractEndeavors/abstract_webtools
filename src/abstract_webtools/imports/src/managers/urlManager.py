@@ -1,28 +1,27 @@
 from __future__ import annotations
 from ..imports import *
 from ..functions import *
+from dataclasses import asdict as _asdict
+
 
 
 
 
 @dataclass
 class ParsedURL:
-    """Single source of truth for a parsed URL. No None in string fields."""
     scheme:   str  = "https"
-    host:     str  = ""       # pure hostname, no port
+    host:     str  = ""
     port:     int | None = None
     www:      bool = False
-    name:     str  = ""       # "localhost", "google"
-    ext:      str  = ""       # ".com", "" for bare hosts
-    path:     str  = ""       # "/some/path"
+    name:     str  = ""
+    ext:      str  = ""
+    path:     str  = ""
     query:    dict = field(default_factory=dict)
     fragment: str  = ""
-    bare:     bool = False    # True for localhost / IPs / no-TLD hosts
+    bare:     bool = False
 
-    # ── derived ──────────────────────────────────────────────────────────
     @property
     def netloc(self) -> str:
-        """host[:port] as a string."""
         return f"{self.host}:{self.port}" if self.port else self.host
 
     @property
@@ -35,6 +34,25 @@ class ParsedURL:
         qs   = f"?{urlencode(self.query)}" if self.query else ""
         frag = f"#{self.fragment}" if self.fragment else ""
         return f"{self.full_domain}{path}{qs}{frag}"
+
+    # ── dict protocol ────────────────────────────────────────────
+    def _as_dict(self) -> dict:
+        d = _asdict(self)
+        d["netloc"]      = self.netloc
+        d["full_domain"] = self.full_domain
+        d["full_url"]    = self.full_url
+        d["valid_variants"] = []   # bare hosts skip variant probing
+        return d
+
+    def get(self, key, default=None):
+        return self._as_dict().get(key, default)
+
+    def __getitem__(self, key):
+        return self._as_dict()[key]
+
+    def __contains__(self, key):
+        return key in self._as_dict()
+
 
 
 def _is_bare_host(host: str) -> bool:
