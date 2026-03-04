@@ -20,7 +20,7 @@ def make_directory(directory=None,path=None):
     if directory==None:
         directory=os.getcwd()
     if path:
-        directory = os.path.join(base_dir,path)
+        directory = os.path.join(directory,path)
     os.makedirs(directory,exist_ok=True)
     return directory
 def get_paths(*paths):
