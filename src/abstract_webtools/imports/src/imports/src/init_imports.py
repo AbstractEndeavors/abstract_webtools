@@ -29,5 +29,5 @@ from urllib.parse import urlparse, urljoin
 import xml.etree.ElementTree as ET
 
 from pdf2image import convert_from_path
-from  import dataclass, field
+from dataclasses import dataclass, field
 
