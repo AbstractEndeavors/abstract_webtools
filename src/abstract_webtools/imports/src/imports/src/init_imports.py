@@ -8,7 +8,7 @@ import pytesseract, requests, shutil, os, sys, unicodedata, urllib.request, json
 from typing import *
 from pathlib import Path
 from datetime import datetime, timedelta 
-from urllib.parse import urljoin,quote, parse_qs, urlparseurl,parse, urlencode, ParseResult
+from urllib.parse import urljoin,quote, parse_qs, urlparse, urlencode, ParseResult
 from collections import Counter
 
 from PIL import Image
@@ -29,5 +29,5 @@ from urllib.parse import urlparse, urljoin
 import xml.etree.ElementTree as ET
 
 from pdf2image import convert_from_path
-from dataclasses import dataclass, field
+from  import dataclass, field
 
