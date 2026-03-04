@@ -65,7 +65,7 @@ def _parse_query(raw: str) -> dict:
     return result
 
 
-def parse_url(url: str | None) -> ParsedURL:
+def parse_url_clean(url: str | None) -> ParsedURL:
     """
     Parse a URL into a fully explicit ParsedURL.
     Never produces None in string fields.
@@ -145,7 +145,10 @@ class urlManager:
         if self._url == None:
             self.parsed = {}
         else:
-            self.parsed = parse_url(self._url,valid_variants=self.valid_variants)
+            if self.valid_variants:
+                self.parsed = parse_url(self._url,valid_variants=self.valid_variants)
+            else:
+                self.parsed = parse_url_clean(self._url)
         if url is None:
             self.clean_urls = self.parsed.get('valid_variants')
             self.url = self.parsed.get('full_url')
